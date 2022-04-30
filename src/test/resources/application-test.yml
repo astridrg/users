@@ -1,0 +1,7 @@
+external:
+  service:
+    host: https://test.test
+    path:
+      character: /api/character/
+      location: /api/location/
+
