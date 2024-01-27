@@ -1,6 +1,5 @@
 package com.app.user.domain.usecase;
 
-import com.app.user.controller.model.request.UserRequest;
 import com.app.user.domain.model.User;
 import com.app.user.domain.port.in.SendUserIn;
 import com.app.user.domain.port.out.SendUserOut;
@@ -16,7 +15,7 @@ public class SaveUserUseCase implements SendUserIn {
     }
 
     public User saveUser(User user) {
-        User userSave = sendUserOut.sendUser(user);
+        User userSave = sendUserOut.saveUser(user);
         return userSave;
     }
 }

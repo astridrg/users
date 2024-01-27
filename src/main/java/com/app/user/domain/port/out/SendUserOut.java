@@ -5,5 +5,5 @@ import com.app.user.domain.model.User;
 
 public interface SendUserOut {
 
-    public User sendUser(User user) ;
+    public User saveUser(User user) ;
 }

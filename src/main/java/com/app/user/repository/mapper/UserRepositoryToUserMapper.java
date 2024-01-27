@@ -3,7 +3,7 @@ package com.app.user.repository.mapper;
 import com.app.user.domain.model.Phone;
 import com.app.user.domain.model.User;
 import com.app.user.repository.model.PhoneRepository;
-import com.app.user.repository.model.UserRepository;
+import com.app.user.repository.model.UserEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,18 +12,18 @@ import java.util.List;
 @Component
 public class UserRepositoryToUserMapper {
 
-    public User userRepositoryToUser(UserRepository userRepository){
+    public User userRepositoryToUser(UserEntity userEntity){
         User user = new User();
-        user.setName(userRepository.getName());
-        user.setEmail(userRepository.getEmail());
-        user.setPhone(phoneListRepositoryToPhoneList(userRepository.getPhone()));
-        user.setPassword(userRepository.getPassword());
-        user.setPassword(userRepository.getPassword());
+        user.setName(userEntity.getName());
+        user.setEmail(userEntity.getEmail());
+        user.setPhone(phoneListRepositoryToPhoneList(userEntity.getPhone()));
+        user.setPassword(userEntity.getPassword());
+        user.setPassword(userEntity.getPassword());
         user.setIsactive(Boolean.TRUE);
-        user.setId(userRepository.getId());
-        user.setModified(userRepository.getModified());
-        user.setCreated(userRepository.getCreated());
-        user.setLast_login(userRepository.getLast_login());
+        user.setId(userEntity.getId());
+        user.setModified(userEntity.getModified());
+        user.setCreated(userEntity.getCreated());
+        user.setLast_login(userEntity.getLastLogin());
         return user;
     }
 

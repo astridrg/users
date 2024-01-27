@@ -5,10 +5,8 @@ import com.app.user.domain.port.out.SendUserOut;
 import com.app.user.repository.jpa.CreateUserRepository;
 import com.app.user.repository.mapper.UserRepositoryToUserMapper;
 import com.app.user.repository.mapper.UserToUserRepositoryMapper;
-import com.app.user.repository.model.UserRepository;
+import com.app.user.repository.model.UserEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class SaveUserInDataBase implements SendUserOut {
@@ -23,10 +21,15 @@ public class SaveUserInDataBase implements SendUserOut {
         this.userRepositoryToUserMapper = userRepositoryToUserMapper;
     }
 
-    public User sendUser(User user) {
-        UserRepository userRepository = modelToRepository.userToUserRepository(user);
-        UserRepository userRepositoryInDB = createUserRepository.save(userRepository);
-        return userRepositoryToUserMapper.userRepositoryToUser(userRepositoryInDB);
+    public User saveUser(User user) {
+        UserEntity userEntity = modelToRepository.userToUserRepository(user);
+        UserEntity userEntityInDB = createUserRepository.save(userEntity);
+        return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
+    }
+
+    public User findUserForEmail(String email) {
+        UserEntity userEntityInDB = createUserRepository.findByEmail(email);
+        return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
     }
 }
 

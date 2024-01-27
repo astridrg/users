@@ -27,9 +27,9 @@ public class PhoneRepository {
     @ManyToOne
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "usersId", referencedColumnName = "id")
-    private UserRepository users;
+    private UserEntity users;
 
-    public PhoneRepository(UUID id, Integer number, Integer cityCode, Integer countryCode, UserRepository users) {
+    public PhoneRepository(UUID id, Integer number, Integer cityCode, Integer countryCode, UserEntity users) {
         this.id = id;
         this.number = number;
         this.cityCode = cityCode;
@@ -72,11 +72,11 @@ public class PhoneRepository {
         this.countryCode = countryCode;
     }
 
-    public UserRepository getUsers() {
+    public UserEntity getUsers() {
         return users;
     }
 
-    public void setUsers(UserRepository users) {
+    public void setUsers(UserEntity users) {
         this.users = users;
     }
 }

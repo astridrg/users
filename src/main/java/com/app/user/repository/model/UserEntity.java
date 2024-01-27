@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name="users")
-public class UserRepository {
+public class UserEntity {
 
 
     @Id
@@ -37,7 +37,7 @@ public class UserRepository {
     private Timestamp modified;
 
     @Column(name = "last_login")
-    private Date last_login;
+    private Date lastLogin;
 
     @Column(name = "is_active")
     private Boolean isActive;
@@ -46,19 +46,19 @@ public class UserRepository {
     @OneToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
     private List <PhoneRepository> phone;
 
-    public UserRepository(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date last_login, Boolean isActive, List<PhoneRepository> phone) {
+    public UserEntity(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date lastLogin, Boolean isActive, List<PhoneRepository> phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.created = created;
         this.modified = modified;
-        this.last_login = last_login;
+        this.lastLogin = lastLogin;
         this.isActive = isActive;
         this.phone = phone;
     }
 
-    public UserRepository() {
+    public UserEntity() {
     }
 
     public UUID getId() {
@@ -109,12 +109,12 @@ public class UserRepository {
         this.modified = modified;
     }
 
-    public Date getLast_login() {
-        return last_login;
+    public Date getLastLogin() {
+        return lastLogin;
     }
 
-    public void setLast_login(Date last_login) {
-        this.last_login = last_login;
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 
     public Boolean getIsActive() {
