@@ -4,6 +4,12 @@ spring:
     username: sa
     password:
     driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings.trace: false
+      settings.web-allow-others: false
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
   mvc:
@@ -12,15 +18,10 @@ spring:
   security:
     user:
       password: password
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings.trace: false
-      settings.web-allow-others: false
+
 
 server:
-  port: 8081
+  port: 8080
 
 regular-expression:
   password-reg: ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>.]).{8,20}$

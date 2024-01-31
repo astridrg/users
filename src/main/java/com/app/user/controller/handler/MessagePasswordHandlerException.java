@@ -21,7 +21,7 @@ public class MessagePasswordHandlerException {
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErrorMessage> handlerMethodArgumentEmailValidateException(ConstraintViolationException e) {
-        ErrorMessage errorMessage = new ErrorMessage("Email already exists");
+        ErrorMessage errorMessage = new ErrorMessage("El correo ya registrado");
         return ResponseEntity.badRequest().body(errorMessage);
     }
 

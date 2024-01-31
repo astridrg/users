@@ -31,5 +31,11 @@ public class SaveUserInDataBase implements SendUserOut {
         UserEntity userEntityInDB = createUserRepository.findByEmail(email);
         return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
     }
+
+    public User findUserForEmailAndPassword(String email, String pass) {
+        UserEntity userEntityInDB = createUserRepository.findByEmail(email);
+        UserEntity userEntityInBD = createUserRepository.findByPassword(pass);
+        return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
+    }
 }
 

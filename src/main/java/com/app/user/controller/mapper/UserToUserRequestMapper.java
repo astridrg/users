@@ -19,7 +19,6 @@ public class UserToUserRequestMapper {
         user.setEmail(userRequest.getEmail());
         user.setPassword(userRequest.getPassword());
         user.setPhone(lisPhoneToPhoneRequest(userRequest.getPhone()));
-        user.setIsactive(Boolean.TRUE);
         return user;
     }
 

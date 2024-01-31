@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name="phone")
-public class PhoneRepository {
+public class PhoneEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +29,7 @@ public class PhoneRepository {
     @JoinColumn(name = "usersId", referencedColumnName = "id")
     private UserEntity users;
 
-    public PhoneRepository(UUID id, Integer number, Integer cityCode, Integer countryCode, UserEntity users) {
+    public PhoneEntity(UUID id, Integer number, Integer cityCode, Integer countryCode, UserEntity users) {
         this.id = id;
         this.number = number;
         this.cityCode = cityCode;
@@ -37,7 +37,7 @@ public class PhoneRepository {
         this.users = users;
     }
 
-    public PhoneRepository() {
+    public PhoneEntity() {
     }
 
     public UUID getId() {

@@ -1,7 +1,9 @@
 package com.app.user.config;
 
 import com.app.user.repository.SaveUserInDataBase;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,20 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtTokenFilter = jwtTokenFilter;
     }
 
-    // Details omitted for brevity
-
+    @Order()
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Enable CORS and disable CSRF
         http = http.cors().and().csrf().disable();
 
-        // Set session management to stateless
         http = http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and();
 
-        // Set unauthorized requests exception handler
         http = http
                 .exceptionHandling()
                 .authenticationEntryPoint(
@@ -51,22 +49,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         }
                 )
                 .and();
+        http.headers().frameOptions().disable();
 
-        // Set permissions on endpoints
         http.authorizeRequests()
-                // Our public endpoints
                 .antMatchers(HttpMethod.POST,"/api/login/**").permitAll()
-                // Our private endpoints
+                .antMatchers( "/h2-console/**", "/h2-console", "/h2-console**", "/favicon.ico", "/h2-console/login.do**", "/chromewebdata/**").permitAll()
+                .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .anyRequest().authenticated();
 
-        // Add JWT token filter
         http.addFilterBefore(
                 jwtTokenFilter,
                 UsernamePasswordAuthenticationFilter.class
         );
+
     }
 
-    // Used by Spring Security if CORS is enabled.
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source =
@@ -79,5 +77,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+
 
 }

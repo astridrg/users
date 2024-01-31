@@ -20,7 +20,7 @@ public class UserToUserResponseMapper {
       userResponse.setPhone(lisPhoneToPhoneResponse(user.getPhone()));
       userResponse.setId(user.getId());
       userResponse.setIsActive(Boolean.TRUE);
-      userResponse.setLast_login(user.getLast_login());
+      userResponse.setLast_login(user.getLastLogin());
       userResponse.setCreated(user.getCreated());
       userResponse.setModified(user.getModified());
         return userResponse;

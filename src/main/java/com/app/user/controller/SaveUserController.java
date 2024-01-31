@@ -7,6 +7,9 @@ import com.app.user.controller.model.response.UserResponse;
 import com.app.user.controller.model.request.UserRequest;
 import com.app.user.domain.model.User;
 import com.app.user.domain.port.in.SendUserIn;
+import com.app.user.domain.port.out.BCryptPasswordPassEncript;
+import com.app.user.domain.port.out.SendUserOut;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +34,7 @@ public class SaveUserController {
     public ResponseEntity<UserResponse> savedUser(@RequestBody @Valid UserRequest userRequest) {
         User user = userToUserRequestMapper.userToUserRequest(userRequest);
         UserResponse response = userToUserResponseMapper.userToUserResponse(sendUserIn.saveUser(user));
-        return ResponseEntity.ok(response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
 

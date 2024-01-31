@@ -44,9 +44,9 @@ public class UserEntity {
 
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
-    private List <PhoneRepository> phone;
+    private List <PhoneEntity> phone;
 
-    public UserEntity(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date lastLogin, Boolean isActive, List<PhoneRepository> phone) {
+    public UserEntity(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date lastLogin, Boolean isActive, List<PhoneEntity> phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -125,11 +125,11 @@ public class UserEntity {
         this.isActive = isActive;
     }
 
-    public List<PhoneRepository> getPhone() {
+    public List<PhoneEntity> getPhone() {
         return phone;
     }
 
-    public void setPhone(List<PhoneRepository> phone) {
+    public void setPhone(List<PhoneEntity> phone) {
         this.phone = phone;
     }
 }

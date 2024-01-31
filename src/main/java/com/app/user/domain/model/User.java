@@ -19,20 +19,20 @@ public class User {
 
     private Timestamp modified;
 
-    private Date last_login;
+    private Date lastLogin;
 
     private Boolean isactive;
 
     private List<Phone> phone;
 
-    public User(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date last_login, Boolean isactive, List<Phone> phone) {
+    public User(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date lastLogin, Boolean isactive, List<Phone> phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.created = created;
         this.modified = modified;
-        this.last_login = last_login;
+        this.lastLogin = lastLogin;
         this.isactive = isactive;
         this.phone = phone;
     }
@@ -88,12 +88,12 @@ public class User {
         this.modified = modified;
     }
 
-    public Date getLast_login() {
-        return last_login;
+    public Date getLastLogin() {
+        return lastLogin;
     }
 
-    public void setLast_login(Date last_login) {
-        this.last_login = last_login;
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 
     public Boolean getIsactive() {
