@@ -26,15 +26,15 @@ public class PhoneEntity {
 
     @ManyToOne
     @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumn(name = "usersId", referencedColumnName = "id")
-    private UserEntity users;
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private UserEntity user;
 
-    public PhoneEntity(UUID id, Integer number, Integer cityCode, Integer countryCode, UserEntity users) {
+    public PhoneEntity(UUID id, Integer number, Integer cityCode, Integer countryCode, UserEntity user) {
         this.id = id;
         this.number = number;
         this.cityCode = cityCode;
         this.countryCode = countryCode;
-        this.users = users;
+        this.user = user;
     }
 
     public PhoneEntity() {
@@ -72,11 +72,11 @@ public class PhoneEntity {
         this.countryCode = countryCode;
     }
 
-    public UserEntity getUsers() {
-        return users;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUsers(UserEntity users) {
-        this.users = users;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

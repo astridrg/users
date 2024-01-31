@@ -32,7 +32,7 @@ public class UserToUserRepositoryMapper {
     phoneEntity.setCountryCode(phone.getCountryCode());
     phoneEntity.setNumber(phone.getNumber());
     phoneEntity.setId(phone.getId());
-    phoneEntity.setUsers(userEntity);
+    phoneEntity.setUser(userEntity);
     return phoneEntity;
     }
 

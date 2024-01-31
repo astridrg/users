@@ -1,13 +1,14 @@
 package com.app.user.controller.model.request;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
 
 public class UserRequest {
 
-
+    @NotBlank
     private String name;
 
     @Email(message = "invalid email")

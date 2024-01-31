@@ -1,4 +1,4 @@
-package com.app.user.config;
+package com.app.user.libs;
 
 import com.app.user.domain.port.out.BCryptPasswordPassEncript;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,5 +17,13 @@ public class BCryptPasswordEncoderPasswordEncode implements BCryptPasswordPassEn
     public String encoder(String pass) {
         return passwordEncoder.encode(pass);
 
+    }
+
+    @Override
+    public Boolean matches(String pass, String passDb) {
+        if (passwordEncoder.matches(pass, passDb)) {
+            return true;
+        }
+        return false;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class UserEntity {
 
 
@@ -43,7 +43,7 @@ public class UserEntity {
     private Boolean isActive;
 
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private List <PhoneEntity> phone;
 
     public UserEntity(UUID id, String name, String email, String password, Timestamp created, Timestamp modified, Date lastLogin, Boolean isActive, List<PhoneEntity> phone) {

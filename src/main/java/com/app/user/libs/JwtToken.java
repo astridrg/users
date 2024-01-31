@@ -1,4 +1,4 @@
-package com.app.user.config;
+package com.app.user.libs;
 
 import com.app.user.domain.model.User;
 import io.jsonwebtoken.*;
@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Map;
 
 @Component
-public class JwtTokenUtil {
+public class JwtToken {
 
     private static final String NAME = "name";
     private static final String EMAIL = "email";

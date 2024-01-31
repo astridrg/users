@@ -1,6 +1,7 @@
 package com.app.user.config;
 
 import com.app.user.domain.model.User;
+import com.app.user.libs.JwtToken;
 import com.app.user.repository.SaveUserInDataBase;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,12 +22,12 @@ import static org.apache.logging.log4j.util.Strings.isEmpty;
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private final JwtTokenUtil jwtTokenUtil;
+    private final JwtToken jwtToken;
     private final SaveUserInDataBase userRepo;
 
-    public JwtTokenFilter(JwtTokenUtil jwtTokenUtil,
+    public JwtTokenFilter(JwtToken jwtToken,
                           SaveUserInDataBase userRepo) {
-        this.jwtTokenUtil = jwtTokenUtil;
+        this.jwtToken = jwtToken;
         this.userRepo = userRepo;
     }
 
@@ -42,12 +43,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
 
         final String token = header.split(" ")[1].trim();
-        if (!jwtTokenUtil.validateToken(token)) {
+        if (!jwtToken.validateToken(token)) {
             chain.doFilter(request, response);
             return;
         }
 
-        String email = jwtTokenUtil.getEmail(token);
+        String email = jwtToken.getEmail(token);
         User userDetails;
         if (email.equals("admin@admin.com")) {
             userDetails= new User();

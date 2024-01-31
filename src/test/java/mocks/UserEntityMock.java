@@ -1,6 +1,5 @@
 package mocks;
 
-import com.app.user.controller.model.response.PhoneResponse;
 import com.app.user.repository.model.PhoneEntity;
 import com.app.user.repository.model.UserEntity;
 
@@ -47,7 +46,7 @@ public class UserEntityMock {
         phoneEntity.setCityCode(20);
         phoneEntity.setCountryCode(20);
         phoneEntity.setId(uuid);
-        phoneEntity.setUsers(userEntity());
+        phoneEntity.setUser(userEntity());
         phoneEntity.setNumber(12345678);
         return phoneEntity;
     }

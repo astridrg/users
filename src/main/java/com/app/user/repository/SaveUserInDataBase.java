@@ -8,6 +8,8 @@ import com.app.user.repository.mapper.UserToUserRepositoryMapper;
 import com.app.user.repository.model.UserEntity;
 import org.springframework.stereotype.Service;
 
+import static java.util.Objects.isNull;
+
 @Service
 public class SaveUserInDataBase implements SendUserOut {
 
@@ -29,12 +31,9 @@ public class SaveUserInDataBase implements SendUserOut {
 
     public User findUserForEmail(String email) {
         UserEntity userEntityInDB = createUserRepository.findByEmail(email);
-        return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
-    }
-
-    public User findUserForEmailAndPassword(String email, String pass) {
-        UserEntity userEntityInDB = createUserRepository.findByEmail(email);
-        UserEntity userEntityInBD = createUserRepository.findByPassword(pass);
+        if (isNull(userEntityInDB)) {
+            return null;
+        }
         return userRepositoryToUserMapper.userRepositoryToUser(userEntityInDB);
     }
 }
